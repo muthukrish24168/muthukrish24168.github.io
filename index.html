@@ -301,39 +301,6 @@ section{padding:6rem 3.5rem;}
 }
 .btn-submit:hover{background:var(--accent2);transform:translateY(-2px);}
 
-/* CERT UPLOAD & VIEWER */
-.cert-item{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:1rem 1.5rem;background:var(--surface);
-  border:1px solid var(--border);transition:border-color 0.2s;gap:1rem;
-}
-.cert-item:hover{border-color:var(--border2);}
-.cert-left{display:flex;flex-direction:column;gap:0.2rem;}
-.cert-name{font-size:0.88rem;font-weight:500;color:var(--text);}
-.cert-issuer-inline{
-  font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;
-  color:var(--accent);
-}
-.cert-actions{display:flex;align-items:center;gap:0.5rem;flex-shrink:0;}
-.cert-upload-btn{
-  font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;
-  padding:0.35rem 0.9rem;border:1px solid var(--border2);
-  color:var(--muted);cursor:pointer;transition:all 0.2s;white-space:nowrap;
-}
-.cert-upload-btn:hover{border-color:var(--accent);color:var(--accent);}
-.cert-upload-btn.uploaded{
-  border-color:rgba(76,175,125,0.4);color:#4CAF7D;
-}
-.cert-view-btn{
-  font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;
-  padding:0.35rem 0.9rem;background:var(--accent);color:var(--bg);
-  border:none;cursor:pointer;transition:all 0.2s;white-space:nowrap;font-weight:600;
-}
-.cert-view-btn:hover{background:var(--accent2);}
-.cert-hint{
-  font-size:0.78rem;color:var(--faint);margin-top:1.25rem;line-height:1.7;
-}
-
 /* FOOTER */
 footer{
   background:var(--surface);border-top:1px solid var(--border);
@@ -527,105 +494,24 @@ footer p{font-size:0.75rem;color:var(--faint);}
 <section class="cert-section" id="certifications">
   <div class="s-label fi">Credentials</div>
   <h2 class="s-title fi">Certifications</h2>
-
-  <div class="cert-list fi" id="certList">
-
-    <!-- CERT 1 -->
-    <div class="cert-item" id="cert-0">
-      <div class="cert-left">
-        <span class="cert-name">Database &amp; SQL</span>
-        <span class="cert-issuer-inline">Infosys Springboard</span>
-      </div>
-      <div class="cert-actions">
-        <label class="cert-upload-btn" for="upload-0" title="Upload certificate">
-          ＋ Upload
-          <input type="file" id="upload-0" accept="image/*,.pdf" style="display:none" onchange="handleUpload(0, this)"/>
-        </label>
-        <button class="cert-view-btn" id="view-0" onclick="openCert(0)" style="display:none">View ↗</button>
-      </div>
+  <div class="cert-list fi">
+    <div class="cert-item">
+      <span class="cert-name">Database &amp; SQL</span>
+      <span class="cert-issuer">Infosys Springboard</span>
     </div>
-
-    <!-- CERT 2 -->
-    <div class="cert-item" id="cert-1">
-      <div class="cert-left">
-        <span class="cert-name">C Programming</span>
-        <span class="cert-issuer-inline">Infosys Springboard</span>
-      </div>
-      <div class="cert-actions">
-        <label class="cert-upload-btn" for="upload-1" title="Upload certificate">
-          ＋ Upload
-          <input type="file" id="upload-1" accept="image/*,.pdf" style="display:none" onchange="handleUpload(1, this)"/>
-        </label>
-        <button class="cert-view-btn" id="view-1" onclick="openCert(1)" style="display:none">View ↗</button>
-      </div>
+    <div class="cert-item">
+      <span class="cert-name">C Programming</span>
+      <span class="cert-issuer">Infosys Springboard</span>
     </div>
-
-    <!-- CERT 3 -->
-    <div class="cert-item" id="cert-2">
-      <div class="cert-left">
-        <span class="cert-name">SQL Case Study — SQL Workshop</span>
-        <span class="cert-issuer-inline">Infosys Springboard</span>
-      </div>
-      <div class="cert-actions">
-        <label class="cert-upload-btn" for="upload-2" title="Upload certificate">
-          ＋ Upload
-          <input type="file" id="upload-2" accept="image/*,.pdf" style="display:none" onchange="handleUpload(2, this)"/>
-        </label>
-        <button class="cert-view-btn" id="view-2" onclick="openCert(2)" style="display:none">View ↗</button>
-      </div>
+    <div class="cert-item">
+      <span class="cert-name">SQL Case Study — SQL Workshop</span>
+      <span class="cert-issuer">Infosys Springboard</span>
     </div>
-
-    <!-- CERT 4 -->
-    <div class="cert-item" id="cert-3">
-      <div class="cert-left">
-        <span class="cert-name">JAVA Features</span>
-        <span class="cert-issuer-inline">Infosys Springboard</span>
-      </div>
-      <div class="cert-actions">
-        <label class="cert-upload-btn" for="upload-3" title="Upload certificate">
-          ＋ Upload
-          <input type="file" id="upload-3" accept="image/*,.pdf" style="display:none" onchange="handleUpload(3, this)"/>
-        </label>
-        <button class="cert-view-btn" id="view-3" onclick="openCert(3)" style="display:none">View ↗</button>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- UPLOAD HINT -->
-  <p class="cert-hint fi">Click <strong style="color:var(--accent)">＋ Upload</strong> on each certificate to attach your Infosys Springboard files (image or PDF). Visitors can then click <strong style="color:var(--accent)">View ↗</strong> to see them.</p>
-
-  <!-- LIGHTBOX -->
-  <div id="certModal" onclick="closeCert(event)" style="
-    display:none;position:fixed;inset:0;z-index:999;
-    background:rgba(0,0,0,0.88);
-    align-items:center;justify-content:center;
-    padding:2rem;
-  ">
-    <div style="position:relative;max-width:860px;width:100%;max-height:90vh;">
-      <button onclick="closeCertBtn()" style="
-        position:absolute;top:-2.5rem;right:0;
-        background:none;border:1px solid rgba(255,255,255,0.2);
-        color:#fff;padding:0.35rem 0.9rem;cursor:pointer;
-        font-size:0.8rem;letter-spacing:0.08em;
-      ">✕ Close</button>
-      <img id="certModalImg" src="" alt="Certificate" style="
-        width:100%;max-height:85vh;object-fit:contain;
-        border:1px solid rgba(255,255,255,0.1);
-        display:none;
-      "/>
-      <iframe id="certModalPdf" src="" style="
-        width:100%;height:80vh;border:none;
-        display:none;
-      "></iframe>
-      <div id="certModalTitle" style="
-        text-align:center;margin-top:0.75rem;
-        font-size:0.8rem;letter-spacing:0.1em;
-        text-transform:uppercase;color:var(--accent);
-      "></div>
+    <div class="cert-item">
+      <span class="cert-name">JAVA Features</span>
+      <span class="cert-issuer">Infosys Springboard</span>
     </div>
   </div>
-
 </section>
 
 <!-- PROJECT -->
@@ -686,11 +572,11 @@ footer p{font-size:0.75rem;color:var(--faint);}
       I'm actively looking for internship opportunities in manufacturing, mechanical design, or production engineering. Whether you have an opening, a project, or just want to talk engineering — reach out!
     </p>
     <div class="contact-list fi">
-      <a href="/cdn-cgi/l/email-protection#4e253c273d7c7a7f78760e29232f2722602d2123" class="c-row">
+      <a href="mailto:kris24168@gmail.com" class="c-row">
         <div class="c-icon">✉</div>
         <div>
           <div class="c-label">Email</div>
-          <div class="c-value"><span class="__cf_email__" data-cfemail="a9c2dbc0da9b9d989f91e9cec4c8c0c587cac6c4">[email&#160;protected]</span></div>
+          <div class="c-value">kris24168@gmail.com</div>
         </div>
       </a>
       <a href="tel:+918072781248" class="c-row">
@@ -744,105 +630,18 @@ footer p{font-size:0.75rem;color:var(--faint);}
   <p>Tirunelveli, Tamil Nadu, India</p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 const obs = new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');obs.unobserve(e.target);}});
 },{threshold:0.1});
 document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
 
-document.getElementById('sendBtn').addEventListener('click', async () => {
-  const btn = document.getElementById('sendBtn');
-  const name    = document.querySelector('input[placeholder="Jane Smith"]').value.trim();
-  const email   = document.querySelector('input[placeholder="jane@company.com"]').value.trim();
-  const subject = document.querySelector('input[placeholder="Internship Opportunity / Collaboration"]').value.trim();
-  const message = document.querySelector('textarea').value.trim();
-
-  if (!name || !email || !subject || !message) {
-    btn.textContent = 'Please fill all fields';
-    btn.style.background = '#E24B4A';
-    setTimeout(() => { btn.textContent = 'Send Message'; btn.style.background = ''; }, 3000);
-    return;
-  }
-
-  btn.textContent = 'Sending…';
-  btn.disabled = true;
-
-  try {
-    const res = await fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, email, subject, message }),
-    });
-    const data = await res.json();
-    if (data.success) {
-      btn.textContent = 'Message Sent ✓';
-      btn.style.background = '#4CAF7D';
-      document.querySelectorAll('input, textarea').forEach(el => el.value = '');
-    } else {
-      btn.textContent = data.error || 'Something went wrong';
-      btn.style.background = '#E24B4A';
-    }
-  } catch (err) {
-    btn.textContent = 'Network Error — Retry';
-    btn.style.background = '#E24B4A';
-  }
-
-  btn.disabled = false;
-  setTimeout(() => { btn.textContent = 'Send Message'; btn.style.background = ''; }, 4000);
-}); // end
-
-// ── Certificate Upload & Lightbox ──────────────────────────
-const certData = {};
-const certNames = ['Database & SQL', 'C Programming', 'SQL Case Study', 'JAVA Features'];
-
-function handleUpload(index, input) {
-  const file = input.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = (e) => {
-    certData[index] = { src: e.target.result, type: file.type, name: certNames[index] };
-    const uploadBtn = document.querySelector(`#cert-${index} .cert-upload-btn`);
-    const viewBtn   = document.getElementById(`view-${index}`);
-    uploadBtn.textContent = '✓ Uploaded';
-    uploadBtn.classList.add('uploaded');
-    viewBtn.style.display = 'inline-block';
-  };
-  reader.readAsDataURL(file);
-}
-
-function openCert(index) {
-  const data = certData[index];
-  if (!data) return;
-  const modal = document.getElementById('certModal');
-  const img   = document.getElementById('certModalImg');
-  const pdf   = document.getElementById('certModalPdf');
-  const title = document.getElementById('certModalTitle');
-  img.style.display = 'none';
-  pdf.style.display = 'none';
-  if (data.type === 'application/pdf') {
-    pdf.src = data.src;
-    pdf.style.display = 'block';
-  } else {
-    img.src = data.src;
-    img.style.display = 'block';
-  }
-  title.textContent = data.name + ' — Infosys Springboard';
-  modal.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-}
-
-function closeCert(e) {
-  if (e.target === document.getElementById('certModal')) closeCertBtn();
-}
-
-function closeCertBtn() {
-  document.getElementById('certModal').style.display = 'none';
-  document.getElementById('certModalImg').src = '';
-  document.getElementById('certModalPdf').src = '';
-  document.body.style.overflow = '';
-}
-
-document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeCertBtn(); });
+document.getElementById('sendBtn').addEventListener('click',()=>{
+  const btn=document.getElementById('sendBtn');
+  btn.textContent='Message Sent ✓';
+  btn.style.background='#4CAF7D';
+  setTimeout(()=>{btn.textContent='Send Message';btn.style.background='';},3000);
+});
 </script>
 </body>
 </html>
